@@ -1,0 +1,49 @@
+// Temperature Converter
+// This program converts temperatures between Celsius, Fahrenheit, and Kelvin.
+
+#include <iostream> // Include the standard input-output stream library
+
+int main() {
+    // Declare variables to store temperatures
+    double celsius, fahrenheit, kelvin;
+
+    // Prompt user to enter temperature in Celsius
+    std::cout << "Enter temperature in Celsius: ";
+    std::cin >> celsius; // Read temperature input from user
+
+    // Convert Celsius to Fahrenheit
+    fahrenheit = (celsius * 9 / 5) + 32;
+
+    // Convert Celsius to Kelvin
+    kelvin = celsius + 273.15;
+
+    // Display converted temperatures
+    std::cout << "Temperature in Fahrenheit: " << fahrenheit << std::endl;
+    std::cout << "Temperature in Kelvin: " << kelvin << std::endl;
+
+    return 0; // Return 0 to indicate successful program execution
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program starts by including the <iostream> library which allows input and output operations.
+Three variables (celsius, fahrenheit, kelvin) are declared to store temperatures in different units.
+User is prompted to input a temperature in Celsius using std::cin.
+Temperature in Celsius is converted to Fahrenheit using the formula (celsius * 9 / 5) + 32.
+Temperature in Celsius is also converted to Kelvin by adding 273.15 to celsius.
+Converted temperatures in Fahrenheit and Kelvin are displayed using std::cout.
+"""
+
+
+"""
+NOTIONS COVERED
+
+C++ syntax fundamentals: literals, symbols, code blocks, and keywords
+C++ built-in types and their literals
+main() function declaration conventions and parameters
+Basics of I/O streams operation
+Operators: unary and binary, priorities and binding (basic arithmetic)
+Assignment and shortcut operators: =, op= (for storing converted values)
+"""
