@@ -1,0 +1,85 @@
+// Interactive Maze Solver Project
+// This code demonstrates the use of multidimensional arrays and pointers to navigate a maze.
+
+#include <iostream>
+#include <vector>
+
+// Define the size of the maze
+const int MAZE_SIZE = 5;
+
+// Function to print the maze
+void printMaze(char maze[MAZE_SIZE][MAZE_SIZE]) {
+    for (int i = 0; i < MAZE_SIZE; ++i) {
+        for (int j = 0; j < MAZE_SIZE; ++j) {
+            std::cout << maze[i][j] << ' ';
+        }
+        std::cout << std::endl;
+    }
+}
+
+// Function to solve the maze using recursion and pointers
+bool solveMaze(char maze[MAZE_SIZE][MAZE_SIZE], int x, int y) {
+    // If the current position is out of the maze boundaries, return false
+    if (x < 0 || x >= MAZE_SIZE || y < 0 || y >= MAZE_SIZE) return false;
+    // If the current position is the exit, return true
+    if (maze[x][y] == 'E') return true;
+    // If the current position is a wall or already visited, return false
+    if (maze[x][y] == '#' || maze[x][y] == '.') return false;
+
+    // Mark the current position as visited
+    maze[x][y] = '.';
+
+    // Try moving in all four directions: right, down, left, up
+    if (solveMaze(maze, x + 1, y)) return true; // Move right
+    if (solveMaze(maze, x, y + 1)) return true; // Move down
+    if (solveMaze(maze, x - 1, y)) return true; // Move left
+    if (solveMaze(maze, x, y - 1)) return true; // Move up
+
+    // Unmark the current position (backtrack)
+    maze[x][y] = ' ';
+
+    return false;
+}
+
+int main() {
+    // Define the maze using a multidimensional array
+    char maze[MAZE_SIZE][MAZE_SIZE] = {
+        {'S', ' ', '#', ' ', ' '},
+        {'#', ' ', '#', ' ', '#'},
+        {'#', ' ', ' ', ' ', '#'},
+        {'#', '#', '#', ' ', '#'},
+        {'#', ' ', ' ', ' ', 'E'}
+    };
+
+    // Print the initial maze
+    std::cout << "Initial Maze:" << std::endl;
+    printMaze(maze);
+
+    // Use pointers to solve the maze starting from the 'S' position (0, 0)
+    if (solveMaze(maze, 0, 0)) {
+        std::cout << "\nMaze Solved:" << std::endl;
+    } else {
+        std::cout << "\nNo solution found for the maze." << std::endl;
+    }
+
+    // Print the solved maze
+    printMaze(maze);
+
+    return 0;
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+The code defines and solves a maze using a multidimensional array and pointers. It includes functions to print and solve the maze, marking visited positions and using recursion to find the path from the start to the exit.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Declaring and initializing multidimensional arrays for maze representation.
+Using pointers to navigate through maze data efficiently.
+"""
+
