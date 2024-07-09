@@ -1,0 +1,96 @@
+// Virtual Pet Simulator
+// This program simulates a virtual pet with attributes such as hunger, happiness, and health.
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// Define a Pet class to encapsulate pet attributes
+class Pet {
+private:
+    string name;
+    int hunger;
+    int happiness;
+    int health;
+
+public:
+    // Constructor to initialize a pet with a name
+    Pet(const string& name) {
+        this->name = name;
+        hunger = 50;    // Initial hunger level
+        happiness = 50; // Initial happiness level
+        health = 100;   // Initial health level
+    }
+
+    // Method to feed the pet, reducing hunger and increasing happiness
+    void feed() {
+        if (hunger > 10) {
+            hunger -= 10;
+            happiness += 5;
+        }
+        else {
+            cout << "Pet is not hungry right now." << endl;
+        }
+    }
+
+    // Method to play with the pet, increasing happiness but reducing health
+    void play() {
+        if (health > 10) {
+            happiness += 10;
+            health -= 5;
+            hunger += 5;
+        }
+        else {
+            cout << "Pet is too tired to play." << endl;
+        }
+    }
+
+    // Method to display the pet's current status
+    void displayStatus() {
+        cout << "Pet: " << name << endl;
+        cout << "Hunger: " << hunger << endl;
+        cout << "Happiness: " << happiness << endl;
+        cout << "Health: " << health << endl;
+        cout << "----------------------" << endl;
+    }
+};
+
+int main() {
+    // Create a vector to store pets
+    vector<Pet*> pets;
+
+    // Add a new pet to the vector
+    pets.push_back(new Pet("Fido"));
+
+    // Interact with the pet
+    pets[0]->feed();
+    pets[0]->play();
+    pets[0]->displayStatus();
+
+    // Clean up memory by deleting allocated pets
+    for (auto pet : pets) {
+        delete pet;
+    }
+    pets.clear();
+
+    return 0;
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+The code simulates a virtual pet named "Fido" with attributes such as hunger, happiness, and health.
+It uses a Pet class to encapsulate these attributes and methods for feeding, playing, and displaying the pet's status.
+A vector pets of pointers to Pet objects is used to manage multiple pets dynamically.
+Memory allocation (new) and deallocation (delete) are utilized to manage pet objects efficiently.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Declaring and using vectors to manage pet attributes.
+Using new and delete for dynamic memory management of pet objects.
+"""
