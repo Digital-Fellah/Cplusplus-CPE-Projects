@@ -1,0 +1,105 @@
+// Text-based RPG Inventory System
+// This program manages an inventory for a text-based RPG game.
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+// Define a structure for items in the inventory
+struct Item {
+    string name;
+    int quantity;
+};
+
+// Function to add an item to the inventory
+void addItem(vector<Item>& inventory, const string& itemName, int quantity) {
+    // Check if the item already exists in the inventory
+    for (auto& item : inventory) {
+        if (item.name == itemName) {
+            item.quantity += quantity; // Increase quantity if item exists
+            cout << quantity << " " << itemName << "(s) added to inventory." << endl;
+            return;
+        }
+    }
+    // If item does not exist, add it to the inventory
+    Item newItem;
+    newItem.name = itemName;
+    newItem.quantity = quantity;
+    inventory.push_back(newItem);
+    cout << quantity << " " << itemName << "(s) added to inventory." << endl;
+}
+
+// Function to remove an item from the inventory
+void removeItem(vector<Item>& inventory, const string& itemName, int quantity) {
+    // Check if the item exists in the inventory
+    for (auto& item : inventory) {
+        if (item.name == itemName) {
+            if (item.quantity >= quantity) {
+                item.quantity -= quantity; // Decrease quantity if item exists
+                cout << quantity << " " << itemName << "(s) removed from inventory." << endl;
+                if (item.quantity == 0) {
+                    // Remove item from inventory if quantity becomes zero
+                    inventory.erase(remove(inventory.begin(), inventory.end(), item), inventory.end());
+                    cout << itemName << " completely removed from inventory." << endl;
+                }
+                return;
+            } else {
+                cout << "Not enough " << itemName << " in inventory to remove." << endl;
+                return;
+            }
+        }
+    }
+    // If item does not exist in inventory
+    cout << "Item '" << itemName << "' not found in inventory." << endl;
+}
+
+// Function to display the current inventory
+void displayInventory(const vector<Item>& inventory) {
+    if (inventory.empty()) {
+        cout << "Inventory is empty." << endl;
+    } else {
+        cout << "Current Inventory:" << endl;
+        for (const auto& item : inventory) {
+            cout << "- " << item.name << ": " << item.quantity << endl;
+        }
+    }
+}
+
+int main() {
+    vector<Item> inventory;
+
+    // Test the inventory system with sample operations
+    addItem(inventory, "Sword", 1);
+    addItem(inventory, "Shield", 1);
+    addItem(inventory, "Potion", 5);
+    displayInventory(inventory);
+
+    removeItem(inventory, "Potion", 2);
+    displayInventory(inventory);
+
+    removeItem(inventory, "Arrow", 10);
+    displayInventory(inventory);
+
+    return 0;
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+addItem function: Adds items to the inventory. Checks if the item already exists, if so, increases quantity; otherwise, adds a new item.
+removeItem function: Removes items from the inventory. Checks if the item exists and if there's enough quantity to remove; adjusts quantity or removes entirely if quantity becomes zero.
+displayInventory function: Prints out the current contents of the inventory.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Functions (defining, invoking)
+Passing arguments (by value)
+Conditional execution (if, else)
+Vector usage for dynamic storage
+"""
