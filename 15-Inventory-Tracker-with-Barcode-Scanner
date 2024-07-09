@@ -1,0 +1,76 @@
+// Inventory Tracker with Barcode Scanner
+// This program demonstrates an inventory management system using Arduino,
+// tracking items through barcode scanning and utilizing structures for item properties.
+
+// Define a structure to hold item information
+struct Item {
+    int id;                 // Unique identifier for the item
+    std::string name;       // Name of the item
+    std::string category;   // Category of the item
+    float price;            // Price of the item
+};
+
+void setup() {
+    // Initialize serial communication for barcode scanner
+    Serial.begin(9600);
+
+    // Initialize variables
+    Item currentItem;
+    currentItem.id = 0;
+    currentItem.name = "";
+    currentItem.category = "";
+    currentItem.price = 0.0;
+}
+
+void loop() {
+    // Check if barcode data is available
+    if (Serial.available() > 0) {
+        // Read the barcode data from serial input
+        std::string barcode = Serial.readString();
+
+        // Simulate database lookup based on barcode (dummy implementation)
+        if (barcode == "12345") {
+            // Update item information based on barcode lookup
+            currentItem.id = 12345;
+            currentItem.name = "Example Item";
+            currentItem.category = "Electronics";
+            currentItem.price = 19.99;
+        } else {
+            // Handle case where barcode does not match any item
+            Serial.println("Item not found in database.");
+        }
+
+        // Print item details
+        Serial.println("Item ID: " + String(currentItem.id));
+        Serial.println("Name: " + currentItem.name);
+        Serial.println("Category: " + currentItem.category);
+        Serial.println("Price: " + String(currentItem.price));
+    }
+
+    // Add delay before checking for next barcode scan
+    delay(1000);
+}
+
+// END OF CODE
+
+
+"""
+EXPLANATION OF THE CODE
+
+This Arduino program sets up an inventory management system using a structure (Item) to store details of items scanned via barcode.
+It initializes serial communication to receive barcode data.
+It defines a structure Item with fields for id, name, category, and price.
+In setup(), it initializes variables and serial communication.
+In loop(), it checks for available barcode data, reads it, and performs a simulated database lookup.
+If a barcode matches, it updates currentItem with item details and prints them.
+It includes error handling for cases where the barcode doesn't match any item.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Declaring and using structures (struct Item { ... }).
+Accessing structure fields using the . operator (currentItem.id, currentItem.name, etc.).
+Using std::string type and string literals (std::string name, std::string category, "Example Item", "Electronics").
+"""
