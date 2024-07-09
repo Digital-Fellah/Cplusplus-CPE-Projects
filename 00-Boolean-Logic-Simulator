@@ -1,0 +1,100 @@
+// Boolean Logic Simulator
+// This program simulates basic Boolean logic gates: AND, OR, NOT, NAND, NOR, XOR.
+
+#include <iostream>
+using namespace std;
+
+// Function to simulate AND gate
+bool and_gate(bool input1, bool input2) {
+    // Perform AND operation
+    bool result = input1 && input2;
+    return result;
+}
+
+// Function to simulate OR gate
+bool or_gate(bool input1, bool input2) {
+    // Perform OR operation
+    bool result = input1 || input2;
+    return result;
+}
+
+// Function to simulate NOT gate
+bool not_gate(bool input) {
+    // Perform NOT operation
+    bool result = !input;
+    return result;
+}
+
+// Function to simulate NAND gate
+bool nand_gate(bool input1, bool input2) {
+    // Perform NAND operation (NOT AND)
+    bool result = !(input1 && input2);
+    return result;
+}
+
+// Function to simulate NOR gate
+bool nor_gate(bool input1, bool input2) {
+    // Perform NOR operation (NOT OR)
+    bool result = !(input1 || input2);
+    return result;
+}
+
+// Function to simulate XOR gate
+bool xor_gate(bool input1, bool input2) {
+    // Perform XOR operation
+    bool result = (input1 || input2) && !(input1 && input2);
+    return result;
+}
+
+int main() {
+    // Inputs for testing gates
+    bool input1 = true;
+    bool input2 = false;
+    
+    // Test AND gate
+    bool and_result = and_gate(input1, input2);
+    cout << "AND Gate: " << input1 << " AND " << input2 << " = " << and_result << endl;
+    
+    // Test OR gate
+    bool or_result = or_gate(input1, input2);
+    cout << "OR Gate: " << input1 << " OR " << input2 << " = " << or_result << endl;
+    
+    // Test NOT gate
+    bool not_result = not_gate(input1);
+    cout << "NOT Gate: NOT " << input1 << " = " << not_result << endl;
+    
+    // Test NAND gate
+    bool nand_result = nand_gate(input1, input2);
+    cout << "NAND Gate: " << input1 << " NAND " << input2 << " = " << nand_result << endl;
+    
+    // Test NOR gate
+    bool nor_result = nor_gate(input1, input2);
+    cout << "NOR Gate: " << input1 << " NOR " << input2 << " = " << nor_result << endl;
+    
+    // Test XOR gate
+    bool xor_result = xor_gate(input1, input2);
+    cout << "XOR Gate: " << input1 << " XOR " << input2 << " = " << xor_result << endl;
+    
+    return 0;
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program defines functions to simulate basic Boolean logic gates: AND, OR, NOT, NAND, NOR, XOR.
+Each function takes Boolean inputs and performs the corresponding logical operation using C++ operators.
+The main() function tests each gate function with predefined inputs (input1 and input2) and outputs the results to the console.
+"""
+
+
+"""
+NOTIONS COVERED
+
+C++ syntax fundamentals: literals, symbols, code blocks, and keywords
+C++ built-in types and their literals
+main() function declaration conventions and parameters
+Basics of I/O streams operation
+Operators: unary and binary, priorities and binding
+Logical (Boolean) operators: ! && ||
+"""
