@@ -1,0 +1,73 @@
+// Basic Calculator Program
+// This program allows users to perform basic arithmetic operations.
+
+#include <iostream>  // Include input-output stream header
+
+using namespace std;
+
+int main() {
+    // Variable declarations
+    double num1, num2, result;
+    char op;
+
+    // Prompt user for input
+    cout << "Enter first number: ";
+    cin >> num1;
+
+    cout << "Enter operator (+, -, *, /): ";
+    cin >> op;
+
+    cout << "Enter second number: ";
+    cin >> num2;
+
+    // Perform calculation based on operator
+    switch(op) {
+        case '+':
+            result = num1 + num2;  // Addition
+            break;
+        case '-':
+            result = num1 - num2;  // Subtraction
+            break;
+        case '*':
+            result = num1 * num2;  // Multiplication
+            break;
+        case '/':
+            if (num2 != 0)
+                result = num1 / num2;  // Division if denominator is not zero
+            else {
+                cout << "Error: Division by zero." << endl;
+                return 1;  // Exit program with error code
+            }
+            break;
+        default:
+            cout << "Error: Invalid operator." << endl;
+            return 1;  // Exit program with error code
+    }
+
+    // Output the result
+    cout << "Result: " << result << endl;
+
+    return 0;  // Exit program successfully
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program starts by prompting the user to enter two numbers and an operator.
+It then uses a switch-case statement to perform the appropriate arithmetic operation based on the operator (+, -, *, /).
+If the user attempts to divide by zero, an error message is displayed.
+Finally, the result of the calculation is printed to the console.
+"""
+
+
+"""
+NOTIONS COVERED
+
+C++ syntax fundamentals: literals, symbols, code blocks, and keywords
+C++ built-in types and their literals
+main() function declaration conventions and parameters
+Basics of I/O streams operation
+Operators: unary and binary, priorities and binding (basic arithmetic)
+Assignment and shortcut operators: =, op=
+"""
