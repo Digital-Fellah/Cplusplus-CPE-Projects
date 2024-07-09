@@ -1,0 +1,57 @@
+// Interactive Chatbot
+// This program simulates a simple chatbot interaction where the user can input
+// messages and receive predefined responses.
+
+#include <iostream>
+#include <string>  // Include necessary library for using std::string
+
+int main() {
+    std::string userInput;  // Declare a string variable to store user input
+
+    // Display a welcome message to the user
+    std::cout << "Welcome to the Interactive Chatbot!" << std::endl;
+    std::cout << "You can start chatting. Type 'exit' to end the conversation." << std::endl;
+
+    // Continuous loop to handle user input until 'exit' is typed
+    while (true) {
+        std::cout << "You: ";
+        std::getline(std::cin, userInput);  // Read user input including spaces
+
+        // Check if user wants to exit
+        if (userInput == "exit") {
+            std::cout << "Chatbot: Goodbye! Have a nice day." << std::endl;
+            break;  // Exit the loop and end the program
+        }
+
+        // Example simple responses
+        if (userInput == "hello") {
+            std::cout << "Chatbot: Hi there!" << std::endl;
+        } else if (userInput == "how are you?") {
+            std::cout << "Chatbot: I'm just a program, but thanks for asking!" << std::endl;
+        } else {
+            std::cout << "Chatbot: Sorry, I didn't understand that." << std::endl;
+        }
+    }
+
+    return 0;
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program initializes a simple interactive chatbot that responds to user inputs.
+It starts by displaying a welcome message and instructions for the user.
+It uses a continuous loop to read user input until the user types 'exit' to end the conversation.
+It provides predefined responses based on user input such as "hello" and "how are you?".
+The program exits gracefully when the user types 'exit'.
+"""
+
+
+"""
+NOTIONS COVERED
+
+std::string type and string literals: Used to declare and manipulate strings for user input and bot responses.
+Declaring, initializing, and using strings: Demonstrated through the use of std::string for userInput handling.
+Basic string operations: Includes comparing user input with predefined responses using string comparison.
+"""
