@@ -1,0 +1,69 @@
+// Automated Plant Watering System
+// This program monitors soil moisture levels and waters plants accordingly.
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// Define a structure to represent a plant
+struct Plant {
+    string name;
+    int moistureLevel;
+    bool needsWater;
+};
+
+int main() {
+    // Create a vector to store plant data
+    vector<Plant*> plants;
+
+    // Simulate adding plants (for demonstration purposes)
+    Plant* plant1 = new Plant{"Rose", 60, false};
+    Plant* plant2 = new Plant{"Lily", 40, true};
+    Plant* plant3 = new Plant{"Fern", 75, false};
+
+    plants.push_back(plant1);
+    plants.push_back(plant2);
+    plants.push_back(plant3);
+
+    // Monitor soil moisture levels and adjust watering needs
+    for (auto& plant : plants) {
+        if (plant->moistureLevel < 50) {
+            plant->needsWater = true;
+            cout << plant->name << " needs water!" << endl;
+        } else {
+            cout << plant->name << " does not need water." << endl;
+        }
+    }
+
+    // Simulate watering the plants (not implemented in this example)
+
+    // Clean up memory by deleting dynamically allocated objects
+    for (auto& plant : plants) {
+        delete plant;
+    }
+    plants.clear();
+
+    return 0;
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+This program simulates an automated plant watering system.
+It defines a Plant structure to hold plant data including name, moisture level, and watering status.
+A vector of pointers to Plant objects (vector<Plant*> plants) is used to store multiple plant instances dynamically.
+Plants are added to the vector using push_back() after being dynamically allocated with new.
+It iterates through the vector of plants, checks each plant's moisture level, and determines if it needs watering based on a threshold.
+The program outputs whether each plant needs water or not.
+After processing, it releases memory allocated for each plant using delete in a loop and clears the vector.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Using vectors to store plant data dynamically.
+Dereferencing pointers (* operator) to access and manipulate plant attributes.
+"""
