@@ -1,0 +1,66 @@
+// Interactive Storytelling Game
+// This program allows the player to navigate through a text-based interactive story.
+
+#include <iostream>
+using namespace std;
+
+// Function to display the introduction and start the game
+void displayIntroduction() {
+    cout << "Welcome to the Interactive Storytelling Game!\n";
+    cout << "You are about to embark on an exciting adventure...\n\n";
+}
+
+// Function to present a choice to the player and return their selection
+char getPlayerChoice() {
+    char choice;
+    cout << "What will you do?\n";
+    cout << "A. Enter the dark cave\n";
+    cout << "B. Follow the path through the forest\n";
+    cout << "Enter your choice (A/B): ";
+    cin >> choice;
+    return choice;
+}
+
+// Function to handle the player's choice and progress the story
+void handleChoice(char choice) {
+    switch (choice) {
+        case 'A':
+            cout << "You enter the dark cave...\n";
+            // Insert logic for cave scenario
+            break;
+        case 'B':
+            cout << "You follow the path through the forest...\n";
+            // Insert logic for forest scenario
+            break;
+        default:
+            cout << "Invalid choice. Please enter 'A' or 'B'.\n";
+    }
+}
+
+// Main function to execute the game
+int main() {
+    displayIntroduction(); // Display the introduction
+    char playerChoice = getPlayerChoice(); // Get the player's choice
+    handleChoice(playerChoice); // Handle the player's choice
+
+    return 0;
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+The displayIntroduction function prints a welcome message to the player.
+getPlayerChoice prompts the player to choose between entering a cave or following a forest path, then returns the chosen character ('A' or 'B').
+handleChoice uses a switch statement to process the player's choice and display the corresponding scenario or an error message.
+The main function orchestrates the flow of the game by calling these functions in sequence.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Conditional execution (if, else)
+Multiple-selection (switch, case)
+Defining, declaring, and invoking functions
+"""
