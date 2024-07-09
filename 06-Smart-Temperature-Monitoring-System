@@ -1,0 +1,46 @@
+// Smart Temperature Monitoring System
+// This program monitors temperature from multiple sensors using vectors and pointers.
+
+#include <iostream>
+#include <vector>
+
+int main() {
+    // Step 1: Declare a vector to store temperature readings
+    std::vector<double> temperatures;
+
+    // Step 2: Simulate reading temperatures from sensors
+    temperatures.push_back(25.5);
+    temperatures.push_back(26.0);
+    temperatures.push_back(24.8);
+
+    // Step 3: Use the data() method to obtain a pointer to the underlying data
+    double* tempPtr = temperatures.data();
+
+    // Step 4: Print out the temperatures using pointers
+    std::cout << "Temperature Readings:\n";
+    for (size_t i = 0; i < temperatures.size(); ++i) {
+        std::cout << "Sensor " << i + 1 << ": " << *(tempPtr + i) << " C\n";
+    }
+
+    return 0;
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program initializes a vector temperatures to store temperature readings.
+Simulated temperature readings are added to the vector.
+It uses the data() method to obtain a pointer (tempPtr) to the first element of the vector.
+The program then dereferences the pointer to print out each sensor's temperature reading.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Declaring and initializing vectors for sensor data storage.
+Using the data() method to obtain a pointer to the underlying data.
+Declaring pointers to sensor readings.
+Dereferencing pointers (* operator) to access sensor data.
+"""
