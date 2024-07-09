@@ -1,0 +1,54 @@
+// Recipe Recommendation System
+// This program recommends recipes based on ingredients entered by the user.
+
+#include <iostream>
+#include <string>
+
+int main() {
+    // Declare variables to store user input and recipes
+    std::string userIngredients;
+    std::string recipe1 = "Spaghetti Carbonara";
+    std::string recipe2 = "Chicken Stir-Fry";
+    std::string recipe3 = "Vegetable Curry";
+
+    // Prompt user to enter ingredients
+    std::cout << "Enter the ingredients you have (separated by spaces): ";
+    std::getline(std::cin, userIngredients);
+
+    // Display user input
+    std::cout << "You entered: " << userIngredients << std::endl;
+
+    // Compare user input with recipes and suggest matches
+    if (userIngredients.find("pasta") != std::string::npos || 
+        userIngredients.find("cheese") != std::string::npos) {
+        std::cout << "We recommend: " << recipe1 << std::endl;
+    }
+    if (userIngredients.find("chicken") != std::string::npos || 
+        userIngredients.find("vegetables") != std::string::npos) {
+        std::cout << "We recommend: " << recipe2 << std::endl;
+    }
+    if (userIngredients.find("vegetables") != std::string::npos || 
+        userIngredients.find("spices") != std::string::npos) {
+        std::cout << "We recommend: " << recipe3 << std::endl;
+    }
+
+    return 0;
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program prompts the user to enter ingredients they have.
+It compares the entered ingredients with predefined recipes using string comparison.
+Based on matches found in the user input, it suggests corresponding recipes.
+"""
+
+
+"""
+NOTIONS COVERED
+
+std::string type and string literals.
+Declaring, initializing, and using strings.
+Comparing strings using find() method of std::string.
+"""
