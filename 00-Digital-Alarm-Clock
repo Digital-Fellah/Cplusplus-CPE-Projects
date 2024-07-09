@@ -1,0 +1,56 @@
+// Digital Alarm Clock Program
+// This program allows users to set and manage alarms.
+
+#include <iostream>  // Include input-output stream library
+#include <ctime>     // Include time library for current time
+using namespace std;
+
+int main() {
+    int currentHour, currentMinute;
+    int alarmHour, alarmMinute;
+    
+    // Get current time
+    time_t now = time(0);  // Get current time in seconds
+    tm *currentTime = localtime(&now);  // Convert current time to tm struct
+    currentHour = currentTime->tm_hour;  // Extract current hour
+    currentMinute = currentTime->tm_min;  // Extract current minute
+    
+    // Prompt user to set alarm
+    cout << "Current time: " << currentHour << ":" << currentMinute << endl;
+    cout << "Set the alarm (hour minute): ";
+    cin >> alarmHour >> alarmMinute;
+    
+    // Display alarm set message
+    cout << "Alarm set for: " << alarmHour << ":" << alarmMinute << endl;
+    
+    // Check if current time matches alarm time
+    if (currentHour == alarmHour && currentMinute == alarmMinute) {
+        cout << "Time to wake up!" << endl;
+    } else {
+        cout << "Alarm not yet triggered." << endl;
+    }
+    
+    return 0;
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program starts by including necessary libraries (iostream for input-output operations and ctime for time-related functions).
+It declares variables to store current time (currentHour, currentMinute) and alarm time (alarmHour, alarmMinute).
+It retrieves the current time using time(0) and localtime(&now), then extracts hours and minutes.
+The user is prompted to set the alarm time using cin.
+It compares the current time with the set alarm time and displays appropriate messages based on whether they match.
+"""
+
+
+"""
+NOTIONS COVERED
+
+C++ syntax fundamentals: literals, symbols, code blocks, and keywords
+C++ built-in types and their literals
+main() function declaration conventions and parameters
+Basics of I/O streams operation
+Logical (Boolean) operators: ! && ||
+"""
