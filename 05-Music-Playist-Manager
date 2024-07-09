@@ -1,0 +1,109 @@
+// Music Playlist Manager
+// This program allows users to manage a music playlist.
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+// Function to display the main menu and handle user input
+void displayMenu() {
+    cout << "===== Music Playlist Manager =====" << endl;
+    cout << "1. Add Song" << endl;
+    cout << "2. Delete Song" << endl;
+    cout << "3. Display Playlist" << endl;
+    cout << "4. Exit" << endl;
+    cout << "=================================" << endl;
+    cout << "Enter your choice: ";
+}
+
+// Function to add a song to the playlist
+void addSong(vector<string> &playlist) {
+    string song;
+    cout << "Enter the name of the song to add: ";
+    cin >> song;
+    playlist.push_back(song); // Add song to the end of the playlist
+    cout << "Song added successfully!" << endl;
+}
+
+// Function to delete a song from the playlist
+void deleteSong(vector<string> &playlist) {
+    if (playlist.empty()) {
+        cout << "Playlist is empty. No songs to delete." << endl;
+        return;
+    }
+
+    int index;
+    cout << "Enter the index of the song to delete (1-" << playlist.size() << "): ";
+    cin >> index;
+
+    if (index < 1 || index > playlist.size()) {
+        cout << "Invalid index. Please enter a valid index." << endl;
+    } else {
+        playlist.erase(playlist.begin() + index - 1); // Delete song at specified index
+        cout << "Song deleted successfully!" << endl;
+    }
+}
+
+// Function to display the current playlist
+void displayPlaylist(const vector<string> &playlist) {
+    if (playlist.empty()) {
+        cout << "Playlist is empty." << endl;
+    } else {
+        cout << "Current Playlist:" << endl;
+        for (int i = 0; i < playlist.size(); ++i) {
+            cout << i + 1 << ". " << playlist[i] << endl;
+        }
+    }
+}
+
+int main() {
+    vector<string> playlist; // Vector to store playlist of songs
+    int choice;
+
+    do {
+        displayMenu(); // Display menu options
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                addSong(playlist); // Add a song to the playlist
+                break;
+            case 2:
+                deleteSong(playlist); // Delete a song from the playlist
+                break;
+            case 3:
+                displayPlaylist(playlist); // Display the current playlist
+                break;
+            case 4:
+                cout << "Exiting program. Goodbye!" << endl;
+                break;
+            default:
+                cout << "Invalid choice. Please enter a valid option." << endl;
+        }
+
+        cout << endl;
+    } while (choice != 4);
+
+    return 0;
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+This program allows users to manage a music playlist through a console interface.
+Users can add songs, delete songs by index, display the current playlist, and exit the program.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Functions: defining, declaring, invoking.
+Conditional execution: if, else.
+Multiple-selection: switch, case.
+Exiting the function: return keyword.
+Passing arguments to parameters: by value.
+"""
