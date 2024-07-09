@@ -1,0 +1,77 @@
+// Quiz Game
+// This program implements a simple multiple-choice quiz game where the user answers questions and scores points based on correct answers.
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    // Variables to store questions, options, and answers
+    string question1 = "What is the capital of France?";
+    string options1 = "a) Paris\nb) Rome\nc) Berlin\nd) Madrid\n";
+    char answer1 = 'a';
+
+    string question2 = "Who wrote 'Hamlet'?";
+    string options2 = "a) Shakespeare\nb) Dickens\nc) Orwell\nd) Austen\n";
+    char answer2 = 'a';
+
+    char userAnswer;
+    int score = 0;
+
+    // Question 1
+    cout << question1 << endl;
+    cout << options1;
+    cout << "Your answer: ";
+    cin >> userAnswer;
+
+    // Check if the answer is correct
+    if (userAnswer == answer1) {
+        cout << "Correct answer! +1 point" << endl;
+        score++;
+    } else {
+        cout << "Wrong answer! The correct answer is: " << answer1 << endl;
+    }
+
+    // Question 2
+    cout << endl << question2 << endl;
+    cout << options2;
+    cout << "Your answer: ";
+    cin >> userAnswer;
+
+    // Check if the answer is correct
+    if (userAnswer == answer2) {
+        cout << "Correct answer! +1 point" << endl;
+        score++;
+    } else {
+        cout << "Wrong answer! The correct answer is: " << answer2 << endl;
+    }
+
+    // Display final score
+    cout << endl << "Your final score is: " << score << " out of 2" << endl;
+
+    return 0;
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program begins by defining two questions with their respective options and correct answers.
+Each question is displayed sequentially with its options.
+The user is prompted to enter their answer for each question.
+After each answer, the program checks if the user's answer matches the correct answer and updates the score accordingly.
+Finally, the program displays the user's final score out of the total number of questions.
+"""
+
+
+"""
+NOTIONS COVERED
+
+C++ syntax fundamentals: literals, symbols, code blocks, and keywords
+C++ built-in types and their literals
+main() function declaration conventions and parameters
+Basics of I/O streams operation
+Operators: unary and binary, priorities and binding (used in game logic)
+Relational operators: == != > >= < <= (for correct answer checking)
+"""
