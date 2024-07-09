@@ -1,0 +1,72 @@
+// Student Database Management System
+// This program manages student records using structures for student details like name, ID, and grades.
+
+#include <iostream>
+#include <string>
+#include <algorithm> // for std::sort
+using namespace std;
+
+// Define a structure for student details
+struct Student {
+    string name;
+    int id;
+    float grades;
+};
+
+// Function to compare students based on their grades (for sorting)
+bool compareByGrades(const Student &a, const Student &b) {
+    return a.grades > b.grades; // Sort in descending order of grades
+}
+
+int main() {
+    const int MAX_STUDENTS = 5; // Maximum number of students
+    Student students[MAX_STUDENTS]; // Array to hold student records
+
+    // Input student details
+    cout << "Enter details for " << MAX_STUDENTS << " students:" << endl;
+    for (int i = 0; i < MAX_STUDENTS; ++i) {
+        cout << "Student " << i + 1 << ":" << endl;
+        cout << "Name: ";
+        getline(cin, students[i].name); // Input student name
+        cout << "ID: ";
+        cin >> students[i].id; // Input student ID
+        cout << "Grades: ";
+        cin >> students[i].grades; // Input student grades
+        cin.ignore(); // Ignore the newline character left in the buffer
+    }
+
+    // Sort students by grades (descending order)
+    sort(students, students + MAX_STUDENTS, compareByGrades);
+
+    // Display sorted student records
+    cout << "\nStudent records sorted by grades (descending):\n";
+    for (int i = 0; i < MAX_STUDENTS; ++i) {
+        cout << "Name: " << students[i].name << ", ID: " << students[i].id << ", Grades: " << students[i].grades << endl;
+    }
+
+    return 0;
+}
+
+// OVER
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program uses a structure Student to store details (name, ID, grades) for each student.
+It initializes an array students to store up to 5 student records.
+It prompts the user to input details for each student and stores them in the array.
+The compareByGrades function is used to define the sorting criteria based on grades in descending order.
+It sorts the students array using std::sort from the <algorithm> library.
+Finally, it prints out the student records sorted by grades in descending order.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Declaring and using structures.
+Accessing structure fields using the . operator.
+Basic string operations (input/output).
+Comparing strings (used indirectly through sorting based on grades).
+"""
