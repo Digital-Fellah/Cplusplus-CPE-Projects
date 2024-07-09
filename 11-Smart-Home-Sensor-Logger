@@ -1,0 +1,57 @@
+// Smart Home Sensor Logger
+// This program logs sensor data from multiple rooms using structures and vectors.
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+// Define a structure to hold sensor data
+struct SensorData {
+    std::string roomName;
+    float temperature;
+    float humidity;
+};
+
+int main() {
+    // Create a vector to store sensor data for multiple rooms
+    std::vector<SensorData> sensorDataVector;
+
+    // Simulate data collection for three rooms
+    SensorData livingRoom = {"Living Room", 23.5, 50.0};
+    SensorData kitchen = {"Kitchen", 21.0, 55.5};
+    SensorData bedroom = {"Bedroom", 22.8, 48.2};
+
+    // Add sensor data to the vector
+    sensorDataVector.push_back(livingRoom);
+    sensorDataVector.push_back(kitchen);
+    sensorDataVector.push_back(bedroom);
+
+    // Display the collected sensor data
+    std::cout << "Sensor Data:\n";
+    for (const auto& data : sensorDataVector) {
+        std::cout << "Room: " << data.roomName << "\n";
+        std::cout << "Temperature: " << data.temperature << " C\n";
+        std::cout << "Humidity: " << data.humidity << " %\n";
+        std::cout << "----------------\n";
+    }
+
+    return 0;
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program initializes a vector sensorDataVector to store SensorData structures, each representing data from a different room.
+Three rooms' sensor data are simulated and added to the vector.
+Finally, it displays the collected sensor data for each room.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Declaring and using structures
+Accessing structure’s fields using . operator
+Vectors of structures
+"""
