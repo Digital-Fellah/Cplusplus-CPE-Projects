@@ -1,0 +1,104 @@
+// Binary Calculator
+// This program allows users to perform basic arithmetic operations on binary numbers.
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Function to convert binary string to decimal integer
+int binaryToDecimal(string binary) {
+    int decimal = 0;
+    int power = 1; // Start with 2^0 = 1
+
+    // Iterate through the string from right to left
+    for (int i = binary.length() - 1; i >= 0; i--) {
+        if (binary[i] == '1') {
+            decimal += power;
+        }
+        power *= 2; // Move to the next power of 2
+    }
+
+    return decimal;
+}
+
+// Function to convert decimal integer to binary string
+string decimalToBinary(int decimal) {
+    string binary = "";
+
+    if (decimal == 0) {
+        binary = "0";
+    } else {
+        while (decimal > 0) {
+            binary = to_string(decimal % 2) + binary;
+            decimal /= 2;
+        }
+    }
+
+    return binary;
+}
+
+// Function to perform binary addition
+string binaryAddition(string binary1, string binary2) {
+    int decimal1 = binaryToDecimal(binary1);
+    int decimal2 = binaryToDecimal(binary2);
+    int sum = decimal1 + decimal2;
+    return decimalToBinary(sum);
+}
+
+// Function to perform binary subtraction
+string binarySubtraction(string binary1, string binary2) {
+    int decimal1 = binaryToDecimal(binary1);
+    int decimal2 = binaryToDecimal(binary2);
+    int difference = decimal1 - decimal2;
+
+    // Ensure non-negative result
+    if (difference < 0) {
+        difference = -difference;
+        return "-" + decimalToBinary(difference);
+    } else {
+        return decimalToBinary(difference);
+    }
+}
+
+int main() {
+    // Binary Calculator
+
+    // Input two binary numbers
+    string binary1, binary2;
+    cout << "Enter first binary number: ";
+    cin >> binary1;
+    cout << "Enter second binary number: ";
+    cin >> binary2;
+
+    // Perform addition and subtraction
+    string sum = binaryAddition(binary1, binary2);
+    string difference = binarySubtraction(binary1, binary2);
+
+    // Output results
+    cout << "Sum: " << sum << endl;
+    cout << "Difference: " << difference << endl;
+
+    return 0;
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program starts by including necessary libraries and defining functions for binary to decimal conversion, decimal to binary conversion, binary addition, and binary subtraction.
+It prompts the user to input two binary numbers.
+It calculates the sum and difference of the binary numbers using the defined functions.
+Finally, it outputs the results of the addition and subtraction operations.
+"""
+
+
+"""
+NOTIONS COVERED
+
+C++ syntax fundamentals: literals, symbols, code blocks, and keywords
+C++ built-in types and their literals
+main() function declaration conventions and parameters
+Basics of I/O streams operation
+Operators: unary and binary, priorities and binding
+Bitwise operators: ~ & ^ | << >>
+"""
