@@ -1,0 +1,107 @@
+// Math Quiz Game
+// This program generates simple addition and subtraction questions for the user to solve.
+
+#include <iostream>
+#include <cstdlib>  // For random number generation
+#include <ctime>    // For seeding the random number generator
+
+using namespace std;
+
+// Function to generate and return a random number between min and max
+int generateRandomNumber(int min, int max) {
+    return rand() % (max - min + 1) + min;
+}
+
+// Function to display the menu and get user's choice
+char displayMenuAndGetChoice() {
+    cout << "Welcome to Math Quiz Game!" << endl;
+    cout << "Choose an option:" << endl;
+    cout << "1. Addition Quiz" << endl;
+    cout << "2. Subtraction Quiz" << endl;
+    cout << "3. Exit" << endl;
+    cout << "Enter your choice: ";
+    char choice;
+    cin >> choice;
+    return choice;
+}
+
+// Function to generate and display an addition quiz
+void additionQuiz() {
+    int num1 = generateRandomNumber(1, 20);
+    int num2 = generateRandomNumber(1, 20);
+    int answer = num1 + num2;
+
+    cout << "What is " << num1 << " + " << num2 << " ?" << endl;
+    int userAnswer;
+    cin >> userAnswer;
+
+    if (userAnswer == answer) {
+        cout << "Correct! Well done." << endl;
+    } else {
+        cout << "Incorrect. The correct answer is " << answer << "." << endl;
+    }
+}
+
+// Function to generate and display a subtraction quiz
+void subtractionQuiz() {
+    int num1 = generateRandomNumber(10, 30);
+    int num2 = generateRandomNumber(1, 10);
+    int answer = num1 - num2;
+
+    cout << "What is " << num1 << " - " << num2 << " ?" << endl;
+    int userAnswer;
+    cin >> userAnswer;
+
+    if (userAnswer == answer) {
+        cout << "Correct! Well done." << endl;
+    } else {
+        cout << "Incorrect. The correct answer is " << answer << "." << endl;
+    }
+}
+
+// Main function
+int main() {
+    srand(time(0));  // Seed the random number generator with current time
+
+    char choice;
+    do {
+        choice = displayMenuAndGetChoice(); // Display menu and get user's choice
+
+        switch(choice) {
+            case '1':
+                additionQuiz(); // Execute addition quiz function
+                break;
+            case '2':
+                subtractionQuiz(); // Execute subtraction quiz function
+                break;
+            case '3':
+                cout << "Exiting the Math Quiz Game. Goodbye!" << endl;
+                break;
+            default:
+                cout << "Invalid choice. Please enter a valid option." << endl;
+        }
+    } while(choice != '3');
+
+    return 0;
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program starts by displaying a menu where the user can choose between addition, subtraction quizzes, or exit the program.
+Based on the user's choice, it calls corresponding functions (additionQuiz() or subtractionQuiz()).
+Each quiz function generates random numbers, asks the user for an answer, and provides feedback on whether the answer is correct or incorrect.
+The program continues to loop until the user chooses to exit.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Conditional execution (if, else)
+Loop keywords (do-while)
+Multiple-selection (switch, case)
+Functions (defining, invoking)
+Returning values (return statement)
+"""
