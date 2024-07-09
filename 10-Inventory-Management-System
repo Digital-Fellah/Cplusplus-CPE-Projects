@@ -1,0 +1,63 @@
+// Inventory Management System
+// This program manages inventory using vectors and pointers
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+// Structure to hold product information
+struct Product {
+    string name;
+    int quantity;
+    float price;
+};
+
+int main() {
+    // Create a vector to store Product objects
+    vector<Product*> inventory;
+
+    // Dynamically allocate memory for new Product objects
+    Product* p1 = new Product{"Keyboard", 50, 29.99};
+    Product* p2 = new Product{"Mouse", 75, 14.99};
+    Product* p3 = new Product{"Monitor", 25, 199.99};
+
+    // Add pointers to products into the vector
+    inventory.push_back(p1);
+    inventory.push_back(p2);
+    inventory.push_back(p3);
+
+    // Display current inventory
+    cout << "Current Inventory:" << endl;
+    for (auto& prod_ptr : inventory) {
+        cout << "Name: " << prod_ptr->name << ", Quantity: " << prod_ptr->quantity << ", Price: $" << prod_ptr->price << endl;
+    }
+
+    // Release allocated memory when done
+    for (auto& prod_ptr : inventory) {
+        delete prod_ptr;
+    }
+    inventory.clear(); // Clear the vector after deleting pointers
+
+    return 0;
+}
+
+
+
+"""
+EXPLANATION OF THE CODE
+
+This program simulates an inventory management system using C++.
+It uses a vector of pointers to Product structures to store inventory data dynamically.
+Products are dynamically allocated using new and stored in the vector.
+The program displays the current inventory and deallocates memory using delete when done.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Declaring and using vectors to store inventory data.
+Dereferencing pointers to access and manipulate inventory items.
+"""
