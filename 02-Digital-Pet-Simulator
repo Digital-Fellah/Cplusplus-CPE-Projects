@@ -1,0 +1,100 @@
+// Digital Pet Simulator
+// Simulates interactions with a virtual pet.
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Function to display menu and get user choice
+int displayMenu() {
+    int choice;
+    cout << "Pet Simulator Menu:\n";
+    cout << "1. Feed the pet\n";
+    cout << "2. Play with the pet\n";
+    cout << "3. Check pet's status\n";
+    cout << "4. Exit\n";
+    cout << "Enter your choice: ";
+    cin >> choice;
+    return choice;
+}
+
+// Function to simulate feeding the pet
+void feedPet(int& hungerLevel) {
+    hungerLevel -= 20;
+    if (hungerLevel < 0) {
+        hungerLevel = 0;
+    }
+    cout << "You feed the pet. Hunger level decreased!\n";
+}
+
+// Function to simulate playing with the pet
+void playWithPet(int& happinessLevel) {
+    happinessLevel += 15;
+    if (happinessLevel > 100) {
+        happinessLevel = 100;
+    }
+    cout << "You play with the pet. Happiness level increased!\n";
+}
+
+// Function to display pet's current status
+void checkStatus(int hungerLevel, int happinessLevel) {
+    cout << "Pet's Status:\n";
+    cout << "Hunger Level: " << hungerLevel << endl;
+    cout << "Happiness Level: " << happinessLevel << endl;
+}
+
+int main() {
+    int hunger = 50;
+    int happiness = 50;
+    bool quit = false;
+
+    cout << "Welcome to the Digital Pet Simulator!\n";
+
+    while (!quit) {
+        int choice = displayMenu();
+
+        switch (choice) {
+            case 1:
+                feedPet(hunger);
+                break;
+            case 2:
+                playWithPet(happiness);
+                break;
+            case 3:
+                checkStatus(hunger, happiness);
+                break;
+            case 4:
+                quit = true;
+                cout << "Exiting the simulator. Goodbye!\n";
+                break;
+            default:
+                cout << "Invalid choice. Please try again.\n";
+                break;
+        }
+    }
+
+    return 0;
+}
+
+
+"""
+EXPLANATION OF THE CODE
+
+The program simulates interactions with a virtual pet.
+It displays a menu with options to feed the pet, play with the pet, check the pet's status, and exit the simulator.
+Based on user input, it calls corresponding functions to perform actions on the pet (feeding, playing, checking status).
+It uses a switch statement to handle different menu choices and a while loop to repeatedly display the menu until the user chooses to exit.
+"""
+
+
+"""
+NOTIONS COVERED
+
+Functions: defining, invoking.
+Passing arguments: by reference.
+Conditional execution: switch, case.
+Loop keywords: while.
+Controlling loop execution: break.
+"""
+
